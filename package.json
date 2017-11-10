@@ -1,0 +1,9 @@
+{
+  "name": "MightyGumball",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node serverJsonp.js"
+  },
+  "main": "serverJsonp.js"
+}
