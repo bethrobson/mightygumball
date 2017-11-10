@@ -10,14 +10,16 @@ var callback;
 var log = createLog();
 updateLog();
 
+var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8124;
+var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
 
 http.createServer(function (req, res) {
-	var uri = url.parse(req.url).pathname;  
+    var uri = url.parse(req.url).pathname;
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end(getResponse(url.parse(req.url).query));
-}).listen(8124, "127.0.0.1");
-console.log('Server running at http://127.0.0.1');
-console.log("Listening on 8214");
+}).listen(server_port, server_ip_address);
+console.log("Server running at " + server_ip_address);
+console.log("Listening on port " + server_port);
 
 function getResponse(query) {
 	var now = 0;
